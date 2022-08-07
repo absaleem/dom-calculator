@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator DOM page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>.btn-default{ height:100px;width:100px; font-size:18px;} #clear{ color:red; } #result{ background-color:#D3D3D3;color:black;font-size:18px; height:100px;} </style>
+</head>
+<body>
+<script src="https://app.zenclass.in/sheets/v1/js/zen/suite/bundle.js"></script>
+<script type="text/javascript">         
+function createDynamicinput(elementtype,data){ var elements=document.createElement(elementtype);
+    for(var arr in data ){  var data1=(arr,data[arr]);
+         Object.keys(data1.attr).forEach(function(key) {
+                 if(key=='innerHtml'){
+                    elements.innerHTML=data1.attr[key];
+                 }else{
+                    elements.setAttribute(key,data1.attr[key]);
+                 }
+        });
+        Object.keys(data1.style).forEach(function(key) {
+                    elements.style.key=data1.style[key];
+        });
+    }
+    return elements;
+}
+function Operations(){
+      var text_field1=document.getElementById('result').value;
+      if(text_field1!=""){
+            if (/^[a-zA-Z]*$/g.test(document.getElementById('result').value)) {
+                  alert("Alphabets are not allowed");
+                  document.getElementById('result').focus();
+                  document.getElementById('result').value='';
+                  return false;
+            }else{
+
+           if (text_field1.indexOf('*') > -1) { 
+            var splitString = text_field1.split('*'); 
+            var val1=splitString[0]; var val2=splitString[1];
+            var res=(parseFloat(val1)*(parseFloat(val2)));  
+            document.getElementById('result').value=res;              
+           }
+           else if (text_field1.indexOf('/') > -1) { 
+            var splitString = text_field1.split('/');
+            var val1=splitString[0]; var val2=splitString[1];
+            var res=(parseFloat(val1)/(parseFloat(val2)));
+            document.getElementById('result').value=res;       
+           }
+           else if (text_field1.indexOf('+') > -1) { 
+            var splitString = text_field1.split('+'); 
+            var val1=splitString[0]; var val2=splitString[1];
+            var res=(parseFloat(val1)+(parseFloat(val2)));
+            document.getElementById('result').value=res;       
+           }
+           else if (text_field1.indexOf('-') > -1) { 
+            var splitString = text_field1.split('-'); 
+            var val1=splitString[0]; var val2=splitString[1];
+            var res=(parseFloat(val1)-(parseFloat(val2)));
+            document.getElementById('result').value=res;            
+           }else{
+        
+         }   
+      }        
+      }else{
+            alert('Enter valid numbers for operations');
+            return false;
+      }       
+}
+      let div_container=createDynamicinput('div',[{"attr" :{"class":"container"},"style":{}}]);
+      let div_row=createDynamicinput('div',[{"attr" :{"class":"row"},"style":{}}]);
+      let h1_tag=createDynamicinput('h1',[{"attr" :{"id":"title","innerHtml":"DOM Calculator task"},"style":{}}]);
+      let p_tag=createDynamicinput('p',[{"attr" :{"id":"description","innerHtml":"calculator using DOM"},"style":{}}]);
+      let div_container_inputbox=createDynamicinput('div',[{"attr" :{"class":"col-sm-12"},"style":{}}]);
+      let div_form_group=createDynamicinput('div',[{"attr" :{"class":"form-group"},"style":{"backgroundColor":"grey"}}]);
+      let input_tag=createDynamicinput('input',[{"attr" :{"class":"form-control","id":"result","placeholder":"0",},"style":{}}]);
+
+      let div_container_row=createDynamicinput('div',[{"attr" :{"class":"col-sm-12"},"style":{"margin":"10px"}}]);;
+      
+      //row1
+      let div_container_row1=createDynamicinput('div',[{"attr" :{"class":"col-sm-12"},"style":{"margin":"10px"}}]);;
+     
+      let div_container_row1_div1=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);;
+      let div_container_row1_div2=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);;
+      let div_container_row1_div3=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);;
+      let div_container_row1_div4=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);;
+      
+      let div_container_row1_div1_button1=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"clear","innerHtml":"C",},"style":{}}]);
+      let div_container_row1_div2_button2=createDynamicinput('button', [{"attr" :{"class":"btn btn-default","id":"backbutton","innerHtml":"<-"},"style":{}}]);
+      let div_container_row1_div3_button3=createDynamicinput('button', [{"attr" :{"class":"btn btn-default","id":"dotbutton","innerHtml":"."},"style":{}}]);
+      let div_container_row1_div4_button4=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"mutiplybutton","innerHtml":"x"},"style":{ }}]);
+//row2
+      let div_container_row2=createDynamicinput('div',[{"attr" :{"class":"col-sm-12"},"style":{"margin":"10px"}}]);;
+     
+      let div_container_row2_div1=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);;
+      let div_container_row2_div2=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);;
+      let div_container_row2_div3=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);;
+      let div_container_row2_div4=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);;
+      
+
+      let div_container_row2_div1_button1=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"7","innerHtml":"7"},"style":{  }}]);
+      let div_container_row2_div2_button2=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"8","innerHtml":"8"},"style":{  }}]);
+      let div_container_row2_div3_button3=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"9","innerHtml":"9"},"style":{  }}]);
+      let div_container_row2_div4_button4=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"mutiplybutton","innerHtml":"/"},"style":{  }}]);
+
+      ////////////////////////////////////////////////////////////////////////////////////////
+//row3
+     let div_container_row3=createDynamicinput('div',[{"attr" :{"class":"col-sm-12"},"style":{"margin":"10px"}}]);;
+     
+     let div_container_row3_div1=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);
+     let div_container_row3_div2=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);
+     let div_container_row3_div3=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);
+     let div_container_row3_div4=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);
+    
+     let div_container_row3_div1_button1=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"4","innerHtml":"4"},"style":{ }}]);
+     let div_container_row3_div2_button2=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"5","innerHtml":"5"},"style":{ }}]);
+     let div_container_row3_div3_button3=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"6","innerHtml":"6"},"style":{ }}]);
+     let div_container_row3_div4_button4=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"subtract","innerHtml":"-"},"style":{ }}]);
+
+////////////////////////////////////////////////////////////////////////////
+//row4
+     let div_container_row4=createDynamicinput('div',[{"attr" :{"class":"col-sm-12"},"style":{}}]);
+     
+     let div_container_row4_div1=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);
+     let div_container_row4_div2=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);
+     let div_container_row4_div3=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);
+     let div_container_row4_div4=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);
+       
+    
+     let div_container_row4_div1_button1=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"1","innerHtml":"1"},"style":{ }}]);
+     let div_container_row4_div2_button2=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"2","innerHtml":"2"},"style":{ }}]);
+     let div_container_row4_div3_button3=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"3","innerHtml":"3"},"style":{ }}]);
+     let div_container_row4_div4_button4=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"add","innerHtml":"+"},"style":{ }}]);
+ 
+//row5
+     let div_container_row5=createDynamicinput('div',[{"attr" :{"class":"col-sm-12"},"style":{}}]);
+     
+     let div_container_row5_div1=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);
+     let div_container_row5_div2=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);
+     let div_container_row5_div3=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);
+     let div_container_row5_div4=createDynamicinput('div',[{"attr" :{"class":"col-sm-3"},"style":{}}]);
+       
+     let div_container_row5_div1_button1=createDynamicinput('button', [{"attr" :{"class":"btn btn-default","id":"0","innerHtml":"0"},"style":{ }}]);
+     let div_container_row5_div2_button2=createDynamicinput('button', [{"attr" :{"class":"btn btn-default","id":"00","innerHtml":"00"},"style":{ }}]);
+     let div_container_row5_div3_button3=createDynamicinput('button',[{"attr" :{"class":"btn btn-default","id":"equal","innerHtml":"="},"style":{  }}]);
+
+
+      div_container_row1_div1_button1.addEventListener('click',(event) => { 
+            document.getElementById('result').value='';
+      });
+
+      div_container_row1_div2_button2.addEventListener('click',(event) => { 
+           var text_field= document.getElementById('result').value;
+           var text_field1 = text_field.substring(0, text_field.length - 1);
+            document.getElementById('result').value=text_field1;
+            console.log(document.getElementById('result').value);
+        
+      });
+
+      input_tag.addEventListener('keyup', (e) => {
+            if (/^[a-zA-Z]*$/g.test(e.target.value)) {
+                  alert("Alphabets are not allowed");
+                  document.getElementById('result').focus();
+                  document.getElementById('result').value='';
+                  return false;
+            }    
+      });   
+
+      //event starts here
+      div_container_row1_div3_button3.addEventListener('click',(event) => {
+           var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1; 
+      });
+      div_container_row1_div4_button4.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+"*";
+            document.getElementById('result').value=text_field1; 
+      });
+      div_container_row2_div4_button4.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1; 
+      });
+      div_container_row3_div4_button4.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1; 
+      });
+      div_container_row4_div4_button4.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1; 
+      });
+      
+      // If the user presses the "Enter" key on the keyboard
+      input_tag.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                  Operations();
+            }
+      });
+      //equal to 
+      div_container_row5_div3_button3.addEventListener('click',(event) => { 
+            Operations();  
+      });
+      //div row2 button events
+      div_container_row2_div1_button1.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1;  
+      });
+      div_container_row2_div2_button2.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1;  
+      });
+      div_container_row2_div3_button3.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1;  
+      });
+
+      //div row3 button events
+      div_container_row3_div1_button1.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1;  
+      });
+      div_container_row3_div2_button2.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1;  
+      });
+      div_container_row3_div3_button3.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1;  
+      });
+
+      
+      //div row4 button events
+      div_container_row4_div1_button1.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1;  
+      });
+      div_container_row4_div2_button2.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1;  
+      });
+      div_container_row4_div3_button3.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1;  
+      });
+
+      //div row5 button events
+      div_container_row5_div1_button1.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1;  
+      });
+      div_container_row5_div2_button2.addEventListener('click',(event) => { 
+            var text_field1= document.getElementById('result').value+""+event.target.innerHTML;
+            document.getElementById('result').value=text_field1;  
+      });
+
+     //event ends here
+      div_form_group.appendChild(input_tag);
+      div_container_inputbox.appendChild(div_form_group);
+
+      div_row.appendChild(h1_tag);
+      div_row.appendChild(p_tag);
+      div_form_group.appendChild(input_tag);  
+      div_container_inputbox.appendChild(div_form_group);
+      div_row.appendChild(div_container_inputbox);
+    
+      div_container_row1_div1.appendChild(div_container_row1_div1_button1); 
+      div_container_row1_div2.appendChild(div_container_row1_div2_button2); 
+      div_container_row1_div3.appendChild(div_container_row1_div3_button3); 
+      div_container_row1_div4.appendChild(div_container_row1_div4_button4); 
+      
+      div_container_row1.appendChild(div_container_row1_div1);
+      div_container_row1.appendChild(div_container_row1_div2);
+      div_container_row1.appendChild(div_container_row1_div3);
+      div_container_row1.appendChild(div_container_row1_div4);
+
+
+      div_container_row2_div1.appendChild(div_container_row2_div1_button1); 
+      div_container_row2_div2.appendChild(div_container_row2_div2_button2); 
+      div_container_row2_div3.appendChild(div_container_row2_div3_button3); 
+      div_container_row2_div4.appendChild(div_container_row2_div4_button4); 
+      
+      div_container_row2.appendChild(div_container_row2_div1);
+      div_container_row2.appendChild(div_container_row2_div2);
+      div_container_row2.appendChild(div_container_row2_div3);
+      div_container_row2.appendChild(div_container_row2_div4);
+    
+      div_container_row3_div1.appendChild(div_container_row3_div1_button1); 
+      div_container_row3_div2.appendChild(div_container_row3_div2_button2); 
+      div_container_row3_div3.appendChild(div_container_row3_div3_button3); 
+      div_container_row3_div4.appendChild(div_container_row3_div4_button4); 
+      
+      div_container_row3.appendChild(div_container_row3_div1);
+      div_container_row3.appendChild(div_container_row3_div2);
+      div_container_row3.appendChild(div_container_row3_div3);
+      div_container_row3.appendChild(div_container_row3_div4);
+
+      div_container_row4_div1.appendChild(div_container_row4_div1_button1); 
+      div_container_row4_div2.appendChild(div_container_row4_div2_button2); 
+      div_container_row4_div3.appendChild(div_container_row4_div3_button3); 
+      div_container_row4_div4.appendChild(div_container_row4_div4_button4); 
+      
+      div_container_row4.appendChild(div_container_row4_div1);
+      div_container_row4.appendChild(div_container_row4_div2);
+      div_container_row4.appendChild(div_container_row4_div3);
+      div_container_row4.appendChild(div_container_row4_div4);
+
+      div_container_row5_div1.appendChild(div_container_row5_div1_button1); 
+      div_container_row5_div2.appendChild(div_container_row5_div2_button2); 
+      div_container_row5_div3.appendChild(div_container_row5_div3_button3); 
+      
+      div_container_row5.appendChild(div_container_row5_div1);
+      div_container_row5.appendChild(div_container_row5_div2);
+      div_container_row5.appendChild(div_container_row5_div3);
+      div_container_row5.appendChild(div_container_row5_div4);
+      
+      div_row.appendChild(div_container_row1);
+      div_row.appendChild(div_container_row2);
+      div_row.appendChild(div_container_row3);
+      div_row.appendChild(div_container_row4);
+      div_row.appendChild(div_container_row5);
+      div_container.appendChild(div_row);
+
+document.body.append(div_container);
+</script>
+
+</body>
+</html>
